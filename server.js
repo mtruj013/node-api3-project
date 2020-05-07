@@ -1,4 +1,5 @@
 const express = require('express');
+const userRouter = require('./users/userRouter.js');
 const server = express();
 
 //global middleware
@@ -6,7 +7,6 @@ server.use(express.json());
 server.use(logger);
 
 //imports
-const userRouter = require('./users/userRouter.js');
 server.use('/api/users', userRouter);
 
 
@@ -19,7 +19,7 @@ server.get('/', (req, res) => {
 // logger logs to the console the following information about each request: request method, request url, and a timestamp
 // this middleware runs on every request made to the API
 function logger(req, res, next) {
-  console.log(`[${new Date().toISOString()}] ${req.meathod} to ${req.url} from ${req.get('Origin')}`);
+  console.log(`[${new Date().toISOString()}], Requested method: ${req.method}, to Url:${req.url} from ${req.get('Origin')}`);
 
   next();
 }
