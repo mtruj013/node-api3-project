@@ -10,10 +10,13 @@ server.use(logger);
 server.use('/api/users', userRouter);
 
 
-server.get('/', (req, res) => {
-  res.send(`<h2>Let's write some middleware!</h2>`);
-});
+// server.get('/', (req, res) => {
+//   res.send(`<h2>Let's write some middleware!</h2>`);
+// });
 
+server.get("/", (req,res) => {
+  res.status(200).json({ envirronment: process.env.NODE.ENV})
+})
 //custom middleware
 
 // logger logs to the console the following information about each request: request method, request url, and a timestamp
